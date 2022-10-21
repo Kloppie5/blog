@@ -1,0 +1,51 @@
+<html>
+  <body>
+    On Oct 20, 2022, Hex-Rays made a post on twitter;<br/>
+    <blockquote class="twitter-tweet"><p lang="en" dir="ltr">🎃 Halloween challenge! Find the hidden instruction in this image, and then continue solving the puzzle on our website 🕷 <a href="https://t.co/BEDKsgwfPn">https://t.co/BEDKsgwfPn</a> <br><br>🎁 The quickest 5 will win an exclusive t-shirt!<a href="https://twitter.com/hashtag/IDA?src=hash&amp;ref_src=twsrc%5Etfw">#IDA</a> <a href="https://twitter.com/hashtag/hexrays?src=hash&amp;ref_src=twsrc%5Etfw">#hexrays</a> <a href="https://twitter.com/hashtag/halloweenchallenge?src=hash&amp;ref_src=twsrc%5Etfw">#halloweenchallenge</a> <a href="https://t.co/lpHh6nc49x">pic.twitter.com/lpHh6nc49x</a></p>&mdash; Hex-Rays SA (@HexRaysSA) <a href="https://twitter.com/HexRaysSA/status/1583095409333121026?ref_src=twsrc%5Etfw">October 20, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <br/>
+    This gives us two sources of information; the link to a blog post, and the image.<br/>
+    <br/>
+    In the background of the image, a repeating byte pattern can be seen.<br/>
+    46 69 6e 64 20 74 68 65 20 68 69 6e 74 73 20 2e 2e 2e<br/>
+    This is the string "Find the hints ...".<br/>
+    If you literally search for "the hints" on the hex-rays blog, you'll find the post "Igor's tip of the week #47: Hints in IDA".<br/>
+    This post has a conspicuous empty span with id "more-7824", 7824 being the shortlink id of this page, but was last modified on 2021-07-12, so it's probably not related.<br/>
+    <br/>
+    The blog post contains an extra script that prints a byte pattern to the console.<br/>
+    7c 20 49 54 4f 54 57 20 7c 20 48 69 6e 74 20 20 20 20 20 7c 0d 0a 2d 2d 2d 2d 2d 2d 2d 2d 2d 2d 2d 2d 2d 2d 2d 2d 2d 2d 2d 2d 0d 0a 7c 20 20 31 31 30 20 20 7c 20 70 75 6d 70 6b 69 6e 73 20 7c 0d 0a 7c 20 20 36 38 20 20 20 7c 20 20 20 20 20 20 20 20 20 20 7c 0d 0a 7c 20 20 34 39 20 20 20 7c 20 72 75 73 74 20 20 20 20 20 7c 0d 0a 7c 20 20 39 34 20 20 20 7c 20 62 6c 6f 6f 64 20 20 20 20 7c 0d 0a 7c 20 20 30 34 20 20 20 7c 20 20 20 20 20 20 20 20 20 20 7c 0d 0a 7c 20 20 35 36 20 20 20 7c 20 73 70 69 64 65 72 20 20 20 7c 0d 0a 7c 20 20 37 36 20 20 20 7c 20 20 20 20 20 20 20 20 20 20 7c<br/>
+    This is a string representing a table that links ITOTW numbers to hints.<br/>
+    | ITOTW | Hint     |<br/>
+    --------------------<br/>
+    |  110  | pumpkins |<br/>
+    |  68   |          |<br/>
+    |  49   | rust     |<br/>
+    |  94   | blood    |<br/>
+    |  04   |          |<br/>
+    |  56   | spider   |<br/>
+    |  76   |          |<br/>
+    The hints can be continued downwards, so the full table is:<br/>
+    | ITOTW | Hint     |<br/>
+    --------------------<br/>
+    |  110  | pumpkins |<br/>
+    |  68   | pumpkins |<br/>
+    |  49   | rust     |<br/>
+    |  94   | blood    |<br/>
+    |  04   | blood    |<br/>
+    |  56   | spider   |<br/>
+    |  76   | spider   |<br/>
+    <br/>
+    The ITOTW numbers refer to Igor's tip of the week, a weekly blog post by Hex-Rays.<br/>
+    On the pages indicated by the ITOTW numbers, there are hints in the form of span tags with the class corresponding to the hint.<br/>
+    This gives us the parts ("ID"), ("en"), ("A", "ll"), ("we"), ("o", "-"), ("2", "0") and ("22").<br/>
+    These pages could have also been found by looking at the modification dates in the sitemap.xml file.<br/>
+    I grouped the letters per part, and made the key "IDAllo-ween2022", which seemed correct.<br/>
+    The blog post mentions "Have you found all the missing parts? They will help you to find the hidden page.", but I was initially unable to find a page with the key.<br/>
+    <br/>
+    The next morning, I was looking into this again when I got hit by a terrible feeling.<br/>
+    I looked at the individual parts and created "IDAlloween-2022", ignoring the grouping per page.<br/>
+    I hoped that this was not correct, but it was.<br/>
+    The page "hex-rays.com/IDAlloween-2022/" gives the instructions to complete the challenge (mailing the marketing team with the subject "IDAloween2022").<br/>
+    <br/>
+    It might have taken a bit longer than it should have, but at least I got there in the end.<br/>
+  </body>
+</html>
