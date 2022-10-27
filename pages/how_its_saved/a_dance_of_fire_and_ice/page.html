@@ -1,0 +1,14 @@
+<html>
+  <body>
+    Hello again~<br/>
+    <br/>
+    A Dance of Fire and Ice is a neat little one-button rhythm game.<br/>
+    The installation folder has a UnityCrashHandler and there is a MonoBleedingEdge folder, so it's clearly a Unity Mono game.<br/>
+    Iterating over the MonoClasses gives us the Persistence class. This links fields to a generalPrefs field and the PlayerPrefs class.<br/>
+    The PlayerPrefs values are all directly accessed via functions that front a string to object dictionary.<br/>
+    This makes the Persistence class almost nothing else than a mapping of these keys to functions the rest of the code can use. Not the most elegand solution, but I guess it works.<br/>
+    This means the savefile is just serialized as a json string and read/written via the RDFile class, meaning the savefile is directly editable, though knowing the keys is required.<br/>
+    <br/>
+    Conclusion; check beforehand if the save is just plain text...
+  </body>
+</html>
