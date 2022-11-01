@@ -1,0 +1,19 @@
+<html>
+  <body>
+    Hello again~<br/>
+    <br/>
+    Hollow Knight is one of my favorite games of all time. It's a Metroidvania with a beautiful art style and a great soundtrack.<br/>
+    The save files are stored in %appdata%\LocalLow\Team Cherry\Hollow Knight<br/>
+    Looking at the content, it looks like it contains some header, followed by base64 encoded data.<br/>
+    The installation folder contains a UnityCrashHandler and a MonoBleedingEdge folder, so it's clearly a Unity Mono game.<br/>
+    Iterating over the MonoClasses gives us the GameManager class, which contains a SaveGame function.<br/>
+    1) The SaveGameData is serialized to JSON,<br/>
+    2) This string is encrypted using Rijdael ECB PKCS7 padding with the key "UKu52ePUBwetZ9wNX88o54dnfKRu0T1l",<br/>
+    3) This LengthPrefixedString is deserialized to file.<br/>
+    <br/>
+    This means that the "header" is actually the C# header and the length of the string.<br/>
+    The savefile contains a lot of individual fields instead of a proper object hierarchy, so for many specific properties, you have to know the exact name of the field.<br/>
+    <br/>
+    Conclusion; a specific pattern at the start could be a C# header if the object is directly deserialized to file.
+  </body>
+</html>
