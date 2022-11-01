@@ -1,0 +1,15 @@
+<html>
+  <body>
+    Hello again~<br/>
+    <br/>
+    Idle Spiral is a small incremental game with a minimalistic art style.<br/>
+    I started messing around with a couple of things and over time I became a big presence in the discord server. This has eventually led to me becoming the head moderator and being given access to the source code after fixing some small and big bugs using just the decompiled code.<br/>
+    <br/>
+    I figured out the save format by looking through the MonoClasses.<br/>
+    Usng the class IdleLibrary.SaveManager as a starting point, I found out that the save file is three base64 strings, separated by an octothorp (#).<br/>
+    These strings are encrypted using AES-CBC with a key and iv derived from Rfc2898DeriveBytes using the password "kkyyhka", the salt "stkttnsstkttns" and 1000 iteration.<br/>
+    <br/>
+    The first string is the "SaveR", the second string is the "Save", and the third string is the "DTO". The DTO contains most of the important data.<br/>
+    Quite a few fields have spelling mistakes, which looks a bit sloppy.
+  </body>
+</html>
