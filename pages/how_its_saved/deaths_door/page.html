@@ -1,0 +1,14 @@
+<html>
+  <body>
+    Hello again~<br/>
+    <br/>
+    Death's Door is a beautiful isometric slashy adventure with a lot of charm and phenomenal writing.<br/>
+    The savefile is located in %appdata%\LocalLow\Acid Nerve\Death's Door\<br/>
+    Looking at its content, it has a lot of strings intermixed with bytes, so it looks like a deserialized object.<br/>
+    Looking in the installation folder, we once again see a UnityCrashHandler and a MonoBleedingEdge folder, so it's clearly a Unity Mono game.<br/>
+    Iterating over the MonoClasses gives us GameSave and a serializable GameSaveData class.<br/>
+    The load and save functions in GameSave directly deserialize and serialize the GameSaveData class.<br/>
+    The GameSaveData fields are tagged to be serialized as XML attributes, and most progress is tracked through a list of flags called boolKeys, and a list of named integers called intKeys.<br/>
+    A better look into the savefile would require some custom deserializer, which I will most likely work on in the future.
+  </body>
+</html>
