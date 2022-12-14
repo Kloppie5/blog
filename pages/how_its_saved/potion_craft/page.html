@@ -1,0 +1,17 @@
+<html>
+  <body>
+    Hello again~<br/>
+    <br/>
+    Potion Craft is a game about brewing potions. Because there are many possible potions and the ability to rename them, I expect the savefile to directly contain a dynamic object.<br/>
+    <br/>
+    Looking at the savefiles, it clearly looks like base64, but there is a newline, suggesting two different base64 strings. Decoding them directly gives garbage, so it's probably encrypted.<br/>
+    <br/>
+    The game installation shows that the game is made with Unity, so I looked at the MonoClasses. I found the class "DirectoryManipulator", which contains a method "Save".<br/>
+    This function tells us the savefile consists of two base64 strings, separated by a newline. The first string is the "metadata", and the second string is the "stateJSON".<br/>
+    <br/>
+    The function uses "Base64.Encode", but this uses a custom Base64 class in the "PotioCraft.Utils" namespace. This class XORs the data with the UTF8 encoded key "a^19uh%47x71e%sd". Using this key, we can decode the base64 strings.<br/>
+    <br/>
+    The stateJSON contains an incredible amount of data, most of which consists of colors and positions. All ingredients and potions are part of an array called "playerInventory".<br/>
+    Because this directly uses strings to identify the ingredients and describe potions using more JSON, editing requires a lot of knowledge about the game.
+  </body>
+</html>
