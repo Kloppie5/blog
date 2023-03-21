@@ -1,0 +1,12 @@
+<html>
+  <body>
+    Joyful is an attempt at communicating with the Nintendo Switch Joy-Con controllers and console over Bluetooth.<br/>
+    <br/>
+    It might be useful to actually figure out how to do anything with Bluetooth. I fairly arbitrarily chose to use python for this, but choosing not to use some existing library. Mostly because I'm a stubborn idiot.<br/>
+    <br/>
+    Looking into how Bluetooth works, the first hurdle would be actually figuring out how to find the Joy-Con controllers. Windows has a built-in Bluetooth stack, so after creating ctypes Structure classes for relevant structs, I can use the BluetoothFindFirstDevice and BluetoothFindNextDevice functions to find devices.<br/>
+    <br/>
+    With this loop, I can get some device information on connected Bluetooth devices like my wireless earphones, but I'm not seeing the Joy-Con controllers.<br/>
+    Now what?<br/>
+  </body>
+</html>
